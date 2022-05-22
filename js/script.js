@@ -5,18 +5,17 @@
 */
 let pattern = [];
 let index = 0 ;
-let level = 1;
+let level = 0;
 const theColors = ["green","red","yellow","blue"];// 0:green ; 1:red ; 2:yellow ; 3:blue
 
 // game starts on mouse click or keypress
 
 // function startGame -> main function
 function startGame(){ 
-    level = 1;
+    level = 0;
     pattern = [];
     index = 0 ;
     document.removeEventListener('keypress',startGame);
-    document.getElementById("title").innerHTML = "Level " + level;
     console.log("started")
         setTimeout(function(){playNextTone();},500);
         boxClick();

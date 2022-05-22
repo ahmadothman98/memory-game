@@ -9,7 +9,9 @@ let level = 0;
 const theColors = ["green","red","yellow","blue"];// 0:green ; 1:red ; 2:yellow ; 3:blue
 
 // game starts on mouse click or keypress
-
+// initialize sounds
+    let sounds = document.querySelectorAll('audio');
+//
 // function startGame -> main function
 function startGame(){ 
     level = 0;
@@ -32,7 +34,7 @@ function playNextTone(){
 
     let chooseRandom = Math.floor(Math.random() * 4); // random nb from 0 to 3
     let color = theColors[chooseRandom];
-    let sound = new Audio("../assets/sounds/"+ color +".mp3");
+    let sound = sounds[theColors.indexOf(color)];
     sound.play();
     let playedColor = document.getElementById(color);
     playedColor.style.backgroundColor = '#011C38';
@@ -45,9 +47,9 @@ function playNextTone(){
 
 
 function playColor(color){
-    let sound = new Audio("../assets/sounds/"+ color +".mp3");
+    let sound = sounds[theColors.indexOf(color)];
     sound.play();
-    console.log("color pay");
+    console.log("color play");
 
     playedColor = document.getElementById(color);
     playedColor.className = playedColor.className + " clicked";
@@ -165,7 +167,7 @@ function blue(){
     }
 }
 function gameOver(){
-    let sound = new Audio("../assets/sounds/wrong.mp3");
+    let sound = sounds[4];
     sound.play();
     document.getElementsByTagName("body")[0].style.backgroundColor="red";
     setTimeout(function(){document.getElementsByTagName("body")[0].style.backgroundColor="#011C38";},200);
